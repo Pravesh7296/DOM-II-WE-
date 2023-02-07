@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <div id="display">
+        <h1 >display</h1>
+    </div>
+    <div id="number">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>0</button>
+    </div>
+    <div id="operator">
+       <button>+</button>
+       <button>-</button>
+       <button>*</button>
+       <button>/</button>
+    </div>
+    <div id="equal">
+       <button>=</button>
+    </div> 
+</body>
+</html>
+<script>
+   
+   let  display=document.getElementById("display")
+let equal=document.getElementById("equal")
+    let firstnumber="";
+    let secondnumber="";
+     let  number=document.querySelectorAll("#number>button")
+     let operator=document.querySelectorAll("#operator>button")
+    
+    flag=true;
+     for(let i=0;i<operator.length;i++ ){
+        operator[i].addEventListener("click",function (){
+            operator=operator[i].innerHTML
+          flag=false;
+        })
+      }
+
+      for(let i=0;i<number.length;i++ ){
+        number[i].addEventListener("click",function (){
+            if(flag==true){
+            firstnumber=firstnumber+number[i].innerHTML
+            display.innerHTML=firstnumber;
+            display.style.fontSize="70px"
+            }
+            else if (flag==false){
+                secondnumber=secondnumber+number[i].innerHTML
+            display.innerHTML=secondnumber;
+            }
+        })
+      }
+equal.addEventListener("click",function (){
+display.innerHTML=cal(operator,firstnumber,secondnumber);
+})
+function cal(op,f,s){
+    
+if(op=="+"){
+  return Number(f)+Number(s)
+}
+else if(op=="-"){
+ return  Number(f)-Number(s)
+}
+else if(op=="*"){
+ return Number(f)*Number(s)
+}
+else if(op=="/"){
+  return 
+  Number(f)/Number(s)
+}
+    }
+
+    
+</script>
